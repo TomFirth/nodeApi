@@ -25,10 +25,11 @@ remove.removeOne = (req, res) => {
     if (req.query.email) query['email'] = utilities.lowercase(req.query.email)
     if (req.query.forename) query['forename'] = utilities.firstLetterUppercase(req.query.forename)
     if (req.query.surname) query['surname'] = utilities.firstLetterUppercase(req.query.surname)
-    if (req.query.newEmail) newValues['email'] = utilities.lowercase(req.query.newEmail)
-    if (req.query.newForename) newValues['forename'] = utilities.firstLetterUppercase(req.query.newForename)
-    if (req.query.newSurname) newValues['surname'] = utilities.firstLetterUppercase(req.query.newSurname)
-    if (Joi.validate(query, schema)) {
+    if (req.query.newEmail) newValues['newEmail'] = utilities.lowercase(req.query.newEmail)
+    if (req.query.newForename) newValues['newForename'] = utilities.firstLetterUppercase(req.query.newForename)
+    if (req.query.newSurname) newValues['newSurname'] = utilities.firstLetterUppercase(req.query.newSurname)
+    const validate = Joi.validate(query, schema)
+    if (validate) {
       db.collection(connecting.mongodb.database)
       .updateOne(query, newValues, (updateErr, result) => {
         if (updateErr) console.log('++ updateErr', updateErr)
@@ -36,7 +37,7 @@ remove.removeOne = (req, res) => {
         client.close()
       })
     } else {
-      res.send('Validation failed')
+      res.send(validate)
     }
   })
 }

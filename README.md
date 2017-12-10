@@ -8,6 +8,7 @@ See full description [here](https://github.com/holidayextras/culture/blob/master
 You were able to create this in any language you liked. For this example I will use NodeJs.
 - express (routing)
 - mongodb (database)
+- joi (request validation)
 
 ## Setup
 - Clone this repository to your computer: `git clone git@github.com:TomFirth/nodeApi.git`.

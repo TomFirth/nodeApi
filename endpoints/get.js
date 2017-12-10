@@ -29,13 +29,14 @@ read.readAll = (res) => {
 read.readOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
     if (err) console.log('++ err', err)
-    var db = client.db(connecting.mongodb.database)
-    var query = {}
+    const db = client.db(connecting.mongodb.database)
+    const query = {}
     if (req.query.id) query['id'] = utilities.lowercase(req.query.id)
     if (req.query.email) query['email'] = utilities.lowercase(req.query.email)
     if (req.query.forename) query['forename'] = utilities.firstLetterUppercase(req.query.forename)
     if (req.query.surname) query['surname'] = utilities.firstLetterUppercase(req.query.surname)
-    if (Joi.validate(query, schema)) {
+    const validate = Joi.validate(query, schema)
+    if (validate) {
       db.collection(connecting.mongodb.database)
       .find(query)
       .toArray((findErr, result) => {
@@ -44,7 +45,7 @@ read.readOne = (req, res) => {
         res.send(result)
       })
     } else {
-      res.send('Validation failed')
+      res.send(validate)
     }
   })
 }
