@@ -1,15 +1,23 @@
 const connecting = require('../config/connecting')
+const Joi = require('joi')
 const MongoClient = require('mongodb').MongoClient
 const utilities = require('../libs/utilities')
 
 const remove = module.exports = {}
 
+const schema = {
+  id: Joi.guid(),
+  email: Joi.string().email.required(),
+  forename: Joi.string().alphanum().required(),
+  surname: Joi.string().alphanum().required(),
+  newEmail: Joi.string().email.required(),
+  newForename: Joi.string().alphanum().required(),
+  newSurname: Joi.string().alphanum().required()
+}
+
 remove.removeOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
     if (err) console.log('++ err', err)
-    if (!req.query.email || !req.query.forename || !req.query.surname) {
-      res.send('Missing email, forename or surname')
-    }
     var db = client.db(connecting.mongodb.database)
     var query = {}
     var newValues = {}
@@ -20,11 +28,15 @@ remove.removeOne = (req, res) => {
     if (req.query.newEmail) newValues['email'] = utilities.lowercase(req.query.newEmail)
     if (req.query.newForename) newValues['forename'] = utilities.firstLetterUppercase(req.query.newForename)
     if (req.query.newSurname) newValues['surname'] = utilities.firstLetterUppercase(req.query.newSurname)
-    db.collection(connecting.mongodb.database)
-    .updateOne(query, newValues, (updateErr, result) => {
-      if (updateErr) console.log('++ updateErr', updateErr)
-      res.send('1 document updated')
-      client.close()
-    })
+    if (Joi.validate(query, schema)) {
+      db.collection(connecting.mongodb.database)
+      .updateOne(query, newValues, (updateErr, result) => {
+        if (updateErr) console.log('++ updateErr', updateErr)
+        res.send('1 document updated')
+        client.close()
+      })
+    } else {
+      res.send('Validation failed')
+    }
   })
 }

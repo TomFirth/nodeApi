@@ -13,6 +13,8 @@ You were able to create this in any language you liked. For this example I will 
 - Clone this repository to your computer: `git clone git@github.com:TomFirth/nodeApi.git`.
 - [Install mongodb](https://docs.mongodb.com/v3.4/installation/) - If you have a Mac with Homebrew, you can follow [these instructions](https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-os-x/).
 - (Optional) [Install compass](https://docs.mongodb.com/compass/master/install/) - to explore your local mongodb database.
+- To test the api you can use either: [Postman](https://www.getpostman.com/apps) or [Swagger](https://swagger.io/swagger-ui/).
+- To start the api: go to the local dir where you cloned the repository and type `npm run start` into your terminal.
 
 ## Mongodb Terminal Usage
 - From terminal: `sudo mongod`.
