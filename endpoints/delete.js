@@ -6,8 +6,8 @@ const utilities = require('../libs/utilities')
 const remove = module.exports = {}
 
 const schema = {
-  id: Joi.guid(),
-  email: Joi.string().email.required(),
+  id: Joi.string().alphanum(),
+  email: Joi.string().email().required(),
   forename: Joi.string().alphanum().required(),
   surname: Joi.string().alphanum().required()
 }

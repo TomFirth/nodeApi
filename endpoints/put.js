@@ -6,11 +6,11 @@ const utilities = require('../libs/utilities')
 const create = module.exports = {}
 
 const schema = {
-  id: Joi.guid(),
-  email: Joi.string().email.required(),
+  id: Joi.string().alphanum(),
+  email: Joi.string().email().required(),
   forename: Joi.string().alphanum().required(),
   surname: Joi.string().alphanum().required(),
-  created: Joi.date().timestamp('javascript').default(Date.now)
+  created: Joi.date()
 }
 
 create.createOne = (req, res) => {
