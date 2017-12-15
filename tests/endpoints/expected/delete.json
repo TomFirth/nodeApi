@@ -1,0 +1,16 @@
+[
+  {
+      "_id": "5a2d98bbdfa0c3443cad78c5",
+      "email": "joe.bloggs@gmail.com",
+      "forename": "Joe",
+      "surname": "Bloggs",
+      "created": "2017-12-10T21:22:30.886Z"
+  },
+  {
+      "_id": "5a2dc1b625750054aeadb6f3",
+      "email": "john.smith@gmail.com",
+      "forename": "John",
+      "surname": "Smith",
+      "created": "2017-12-10T21:22:30.886Z"
+  }
+]

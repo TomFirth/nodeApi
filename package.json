@@ -22,11 +22,14 @@
     "mongodb": "^3.0.0-rc0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "nodemon": "*",
-    "standard": "*"
+    "mocha": "4.0.1",
+    "mongo-mock": "2.8.0",
+    "nodemon": "1.12.7",
+    "standard": "10.0.3"
   },
   "standard": {
-    "env": [ "mocha" ]
+    "env": [
+      "mocha"
+    ]
   }
 }
