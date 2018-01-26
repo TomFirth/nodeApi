@@ -18,7 +18,6 @@ describe('Update users', () => {
           'email': 'jane.doe@gmail.com'
         }, (err, result) => {
           if (err) throw err
-          console.log('++', result)
           assert.equal(result.matchedCount, 1)
           assert.equal(result.modifiedCount, 1)
         })
