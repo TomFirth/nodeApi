@@ -15,7 +15,7 @@ const schema = {
 
 create.createOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) throw err
+    if (err) res.status(500).send(err)
     const db = client.db(connecting.mongodb.database)
     const query = {}
     if (req.query.email) query['email'] = utilities.lowercase(req.query.email)
@@ -26,12 +26,12 @@ create.createOne = (req, res) => {
     if (validate) {
       db.collection(connecting.mongodb.database)
       .insertOne(query, (err, result) => {
-        if (err) throw err
-        res.send('1 document inserted')
-        client.close()
+        if (err) res.status(500).send(err)
+        res.status(200).send('1 document inserted')
       })
     } else {
-      res.send(validate)
+      res.status(500).send(validate)
     }
+    client.close()
   })
 }

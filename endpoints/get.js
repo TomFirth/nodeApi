@@ -14,21 +14,21 @@ const schema = {
 
 read.readAll = (res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) throw err
+    if (err) res.status(500).send(err)
     var db = client.db(connecting.mongodb.database)
     db.collection(connecting.mongodb.database)
     .find({})
     .toArray((err, result) => {
-      if (err) throw err
-      client.close()
-      res.send(result)
+      if (err) res.status(500).send(err)
+      res.status(200).send(result)
     })
+    client.close()
   })
 }
 
 read.readOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) throw err
+    if (err) res.status(500).send(err)
     const db = client.db(connecting.mongodb.database)
     const query = {}
     if (req.query.id) query['id'] = utilities.lowercase(req.query.id)
@@ -40,12 +40,12 @@ read.readOne = (req, res) => {
       db.collection(connecting.mongodb.database)
       .find(query)
       .toArray((err, result) => {
-        if (err) throw err
-        client.close()
-        res.send(result)
+        if (err) res.status(500).send(err)
+        res.status(200).send(result)
       })
     } else {
-      res.send(validate)
+      res.status(500).send(validate)
     }
+    client.close()
   })
 }
