@@ -14,12 +14,12 @@ const schema = {
 
 read.readAll = (res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) console.log('++ err', err)
+    if (err) throw err
     var db = client.db(connecting.mongodb.database)
     db.collection(connecting.mongodb.database)
     .find({})
-    .toArray((findErr, result) => {
-      if (findErr) console.log('++ findErr', findErr)
+    .toArray((err, result) => {
+      if (err) throw err
       client.close()
       res.send(result)
     })
@@ -28,7 +28,7 @@ read.readAll = (res) => {
 
 read.readOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) console.log('++ err', err)
+    if (err) throw err
     const db = client.db(connecting.mongodb.database)
     const query = {}
     if (req.query.id) query['id'] = utilities.lowercase(req.query.id)
@@ -39,8 +39,8 @@ read.readOne = (req, res) => {
     if (validate) {
       db.collection(connecting.mongodb.database)
       .find(query)
-      .toArray((findErr, result) => {
-        if (findErr) console.log('++ findErr', findErr)
+      .toArray((err, result) => {
+        if (err) throw err
         client.close()
         res.send(result)
       })

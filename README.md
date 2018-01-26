@@ -5,13 +5,14 @@ Technical application for backend developer job at Holiday Extras.
 
 See full description [here](https://github.com/holidayextras/culture/blob/master/recruitment/developer-API-task.md).
 
-You are able to create this in any language you like. For this example I will use NodeJs.
+You are able to complete this task in any language you like. For this example I will use NodeJs.
 
 Third party packages also used:
 - [express](https://www.npmjs.com/package/express) (routing)
 - [mongodb](https://www.npmjs.com/package/mongodb) (database)
 - [joi](https://www.npmjs.com/package/joi) (request validation)
 - [mocha](https://www.npmjs.com/package/mocha) (tests)
+- [mongo-mock](https://www.npmjs.com/package/mongo-mock) (tests)
 
 ## Setup
 - Clone this repository to your computer: `git clone git@github.com:TomFirth/nodeApi.git`.
@@ -23,6 +24,7 @@ Third party packages also used:
 - New terminal window: `sudo mongo` - this starts a local mongodb instance.
 - You will create a new database and collection when you first save data to mongodb with this api.
 - To start the api: go to the local dir where you cloned the repository and type `npm start` into your terminal.
+- You can then use the below http requests in [Postman](https://github.com/TomFirth/nodeApi#postman) to test the api.
 
 ## Development
 If you would like to use this api as a basis to build on, i've left `nodemon` in. To use this start the server with `npm run dev`

@@ -9,17 +9,20 @@ var url = 'mongodb://localhost:27017/users'
 describe('Create user', () => {
   it('should create a user document', () => {
     MongoClient.connect(url, (err, db) => {
+      if (err) throw err
       var collection = db.collection('users')
       collection.insertMany(fixtures, (err, result) => {
-        if (err) console.log('insertmany', err)
+        if (err) throw err
         collection.insertOne({
-          _id: '5a2dc1a123750054aeadb6f3',
+          _id: '5a2dc1a123750054headb9e0',
           email: 't.test@gmail.com',
           forename: 't',
           surname: 'test',
           created: '2017-12-10T21:22:30.886Z'
         }, (err, result) => {
-          if (!err) assert.equal(expected, result)
+          if (err) throw err
+          assert.deepEqual(expected, result.ops)
+          assert.equal(result.insertedCount, 1)
         })
       })
       db.close()

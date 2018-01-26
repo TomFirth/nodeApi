@@ -14,7 +14,7 @@ const schema = {
 
 remove.removeOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) console.log('++ err', err)
+    if (err) throw err
     const db = client.db(connecting.mongodb.database)
     const query = {}
     if (req.query.id) query['id'] = utilities.lowercase(req.query.id)
@@ -24,8 +24,8 @@ remove.removeOne = (req, res) => {
     const validate = Joi.validate(query, schema)
     if (validate) {
       db.collection(connecting.mongodb.database)
-      .deleteOne(query, (deleteErr, result) => {
-        if (deleteErr) console.log('++ deleteErr', deleteErr)
+      .deleteOne(query, (err, result) => {
+        if (err) throw err
         res.send('1 document deleted')
         client.close()
       })

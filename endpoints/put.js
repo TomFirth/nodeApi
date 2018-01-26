@@ -15,7 +15,7 @@ const schema = {
 
 create.createOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) console.log('++ err', err)
+    if (err) throw err
     const db = client.db(connecting.mongodb.database)
     const query = {}
     if (req.query.email) query['email'] = utilities.lowercase(req.query.email)
@@ -25,8 +25,8 @@ create.createOne = (req, res) => {
     const validate = Joi.validate(query, schema)
     if (validate) {
       db.collection(connecting.mongodb.database)
-      .insertOne(query, (insertErr, result) => {
-        if (insertErr) console.log('++ insertErr', insertErr)
+      .insertOne(query, (err, result) => {
+        if (err) throw err
         res.send('1 document inserted')
         client.close()
       })

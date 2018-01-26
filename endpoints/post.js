@@ -17,7 +17,7 @@ const schema = {
 
 remove.removeOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
-    if (err) console.log('++ err', err)
+    if (err) throw err
     var db = client.db(connecting.mongodb.database)
     var query = {}
     var newValues = {}
@@ -31,8 +31,8 @@ remove.removeOne = (req, res) => {
     const validate = Joi.validate(query, schema)
     if (validate) {
       db.collection(connecting.mongodb.database)
-      .updateOne(query, newValues, (updateErr, result) => {
-        if (updateErr) console.log('++ updateErr', updateErr)
+      .updateOne(query, newValues, (err, result) => {
+        if (err) throw err
         res.send('1 document updated')
         client.close()
       })
