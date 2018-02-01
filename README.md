@@ -27,7 +27,9 @@ Third party packages also used:
 - You can then use the below http requests in [Postman](https://github.com/TomFirth/nodeApi#postman) to test the api.
 
 ## Development
-If you would like to use this api as a basis to build on, i've left `nodemon` in. To use this start the server with `npm run dev`
+If you would like to use this api as a basis to build on, i've left `nodemon` in.
+
+To use this start the server with `npm run dev`
 
 ## Postman
 [Postman collection included](nodeApi.postman_collection.json)
@@ -36,8 +38,8 @@ If you would like to use this api as a basis to build on, i've left `nodemon` in
 - (Create One) Required params: `email, forename, surname`
 #### ::GET (Read)
 - (Read All)
-- (Read One) Required params: `email, forename, surname`
+- (Read One) Required params: `id || email || forename || surname`
 #### ::POST (Update)
-- (Update One) Required params: `email, forename, surname`
+- (Update One) Required params: `id, email, forename, surname && newEmail || newForename || newSurname`
 #### ::DELETE (Delete)
-- (Delete One) Required params: `email, forename, surname`
+- (Delete One) Required params: `id || email || forename || surname`
