@@ -17,17 +17,19 @@ create.createOne = (req, res) => {
   MongoClient.connect(connecting.mongodb.path, (err, client) => {
     if (err) res.status(500).send(err)
     const db = client.db(connecting.mongodb.database)
-    const query = {}
-    if (req.query.email) query['email'] = utilities.lowercase(req.query.email)
-    if (req.query.forename) query['forename'] = utilities.firstLetterUppercase(req.query.forename)
-    if (req.query.surname) query['surname'] = utilities.firstLetterUppercase(req.query.surname)
-    query['created'] = new Date()
+    const query = {
+      email: utilities.lowercase(req.query.email),
+      forename: utilities.firstLetterUppercase(req.query.forename),
+      surname: utilities.firstLetterUppercase(req.query.surname),
+      created: new Date()
+    }
     const validate = Joi.validate(query, schema)
-    if (validate) {
+    console.log(query, validate)
+    if (!validate.error) {
       db.collection(connecting.mongodb.database)
       .insertOne(query, (err, result) => {
         if (err) res.status(500).send(err)
-        res.status(200).send('1 document inserted')
+        res.status(200).send(result)
       })
     } else {
       res.status(500).send(validate)

@@ -1,7 +1,7 @@
-const del = require('./delete')
-const get = require('./get')
-const post = require('./post')
-const put = require('./put')
+const del = require('../controllers/delete')
+const get = require('../controllers/get')
+const post = require('../controllers/post')
+const put = require('../controllers/put')
 
 module.exports = (app) => {
   app.get('/', (req, res) => {
@@ -17,10 +17,10 @@ module.exports = (app) => {
   })
 
   app.post('/', (req, res) => {
-    post.updateOne(req, res)
+    post.createOne(req, res)
   })
 
   app.put('/', (req, res) => {
-    put.createOne(req, res)
+    put.updateOne(req, res)
   })
 }

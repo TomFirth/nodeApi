@@ -16,7 +16,8 @@ Third party packages also used:
 
 ## Setup
 - Clone this repository to your computer: `git clone git@github.com:TomFirth/nodeApi.git`.
-- If you have `NVM` installed, type `nvm use` (this will automatically attempt to use the correct version of node for this repository) Then install the repository with `npm i`.
+- If you have `nvm` installed, type `nvm use` (this will automatically attempt to use the correct version of node for this repository)
+- Then install the repository with `npm i`. [nvm installation](https://github.com/creationix/nvm)
 - [Install mongodb](https://docs.mongodb.com/v3.4/installation/) - If you have a Mac with Homebrew, you can follow [these instructions](https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-os-x/).
 - (Optional) [Install compass](https://docs.mongodb.com/compass/master/install/) - to explore your local mongodb database.
 - To test the api you can use either: [Postman](https://www.getpostman.com/apps) or [Swagger](https://swagger.io/swagger-ui/). A collection of Postman requests have been made for you [here](https://github.com/TomFirth/nodeApi#postman-usage).
@@ -26,20 +27,15 @@ Third party packages also used:
 - To start the api: go to the local dir where you cloned the repository and type `npm start` into your terminal.
 - You can then use the below http requests in [Postman](https://github.com/TomFirth/nodeApi#postman) to test the api.
 
-## Development
-If you would like to use this api as a basis to build on, i've left `nodemon` in.
-
-To use this start the server with `npm run dev`
-
 ## Postman
 [Postman collection included](nodeApi.postman_collection.json)
 
-#### ::PUT (Create)
-- (Create One) Required params: `email, forename, surname`
 #### ::GET (Read)
 - (Read All)
 - (Read One) Required params: `id || email || forename || surname`
-#### ::POST (Update)
-- (Update One) Required params: `id, email, forename, surname && newEmail || newForename || newSurname`
 #### ::DELETE (Delete)
 - (Delete One) Required params: `id || email || forename || surname`
+#### ::POST (Create)
+- (Create One) Required params: `email, forename, surname`
+#### ::PUT (Update)
+- (Update One) Required params: `id, email, forename, surname && newEmail || newForename || newSurname`
