@@ -27,14 +27,11 @@ module.exports = (app) => {
   app.get('/endpoints', (req, res) => {
     res.send({
       POST: {
-        id: 'dynamic',
         email: 'required',
         forename: 'required',
-        surname: 'required',
-        created: 'dynamic'
+        surname: 'required'
       },
       PUT: {
-        id: 'not required',
         email: 'required',
         forename: 'required',
         surname: 'required',

@@ -39,3 +39,7 @@ Third party packages also used:
 - (Create One) Required params: `email, forename, surname`
 #### ::PUT (Update)
 - (Update One) Required params: `id, email, forename, surname && newEmail || newForename || newSurname`
+
+
+## For a list of required parameters:
+#### ::GET `/endpoints`
