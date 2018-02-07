@@ -24,12 +24,11 @@ create.createOne = (req, res) => {
       created: new Date()
     }
     const validate = Joi.validate(query, schema)
-    console.log(query, validate)
     if (!validate.error) {
       db.collection(connecting.mongodb.database)
       .insertOne(query, (err, result) => {
         if (err) res.status(500).send(err)
-        res.status(200).send(result)
+        if (result.n === 1) res.status(201).send(result)
       })
     } else {
       res.status(500).send(validate)

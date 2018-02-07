@@ -23,4 +23,37 @@ module.exports = (app) => {
   app.put('/', (req, res) => {
     put.updateOne(req, res)
   })
+
+  app.get('/endpoints', (req, res) => {
+    res.send({
+      POST: {
+        id: 'dynamic',
+        email: 'required',
+        forename: 'required',
+        surname: 'required',
+        created: 'dynamic'
+      },
+      PUT: {
+        id: 'not required',
+        email: 'required',
+        forename: 'required',
+        surname: 'required',
+        newEmail: 'not required',
+        newForename: 'not required',
+        newSurname: 'not required'
+      },
+      GET: {
+        id: 'not required',
+        email: 'not required',
+        forename: 'not required',
+        surname: 'not required'
+      },
+      DELETE: {
+        id: 'not required',
+        email: 'not required',
+        forename: 'not required',
+        surname: 'not required'
+      }
+    })
+  })
 }

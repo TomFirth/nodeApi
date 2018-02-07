@@ -21,7 +21,6 @@ remove.removeOne = (req, res) => {
     if (req.query.email) query.email = utilities.lowercase(req.query.email)
     if (req.query.forename) query.forename = utilities.firstLetterUppercase(req.query.forename)
     if (req.query.surname) query.surname = utilities.firstLetterUppercase(req.query.surname)
-    console.log('++ del query', query)
     const validate = Joi.validate(query, schema)
     if (!validate.error) {
       db.collection(connecting.mongodb.database)
