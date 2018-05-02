@@ -32,9 +32,9 @@ update.updateOne = (req, res) => {
     if (!req.query.newEmail && !req.query.newForename && !req.query.newSurname) {
       res.status(400).send('no changes were submitted')
     }
-    const validate = Joi.validate(query, schema)
-    const validateNew = Joi.validate(newValues, schema)
-    if (!validate.error && !validateNew.error) {
+    const mergeQuery = Object.assign({}, query, newValues)
+    const validate = Joi.validate(mergeQuery, schema)
+    if (!validate.error) {
       db.collection(connecting.mongodb.database)
       .updateOne(query, newValues, (err, result) => {
         if (err) res.status(500).send(err)
