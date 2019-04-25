@@ -1,8 +1,7 @@
 {
 	"info": {
+		"_postman_id": "28a6f736-1136-4278-9fd6-f97a26168c78",
 		"name": "nodeApi",
-		"_postman_id": "8349eb49-d35c-2fa0-fb04-8e21b2ecd4d0",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -14,7 +13,10 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:12345",
 					"protocol": "http",
@@ -35,7 +37,10 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:12345?email&forename=&surname=",
 					"protocol": "http",
@@ -46,18 +51,15 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "",
-							"equals": false
+							"value": null
 						},
 						{
 							"key": "forename",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "surname",
-							"value": "",
-							"equals": true
+							"value": ""
 						}
 					]
 				},
@@ -73,7 +75,10 @@
 				},
 				"method": "PUT",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:12345?email=&forename=&surname=",
 					"protocol": "http",
@@ -84,18 +89,15 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "forename",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "surname",
-							"value": "",
-							"equals": true
+							"value": ""
 						}
 					]
 				},
@@ -111,7 +113,10 @@
 				},
 				"method": "POST",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:12345?email=&forename=&surname=&newEmail=&newForename=&newSurname=",
 					"protocol": "http",
@@ -122,33 +127,27 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "forename",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "surname",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "newEmail",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "newForename",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "newSurname",
-							"value": "",
-							"equals": true
+							"value": ""
 						}
 					]
 				},
@@ -164,7 +163,10 @@
 				},
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:12345?email=&forename=&surname=",
 					"protocol": "http",
@@ -175,40 +177,57 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "forename",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "surname",
-							"value": "",
-							"equals": true
+							"value": ""
 						},
 						{
 							"key": "newEmail",
 							"value": "",
-							"equals": true,
 							"disabled": true
 						},
 						{
 							"key": "newForename",
 							"value": "",
-							"equals": true,
 							"disabled": true
 						},
 						{
 							"key": "newSurname",
 							"value": "",
-							"equals": true,
 							"disabled": true
 						}
 					]
 				},
 				"description": "Delete a user"
+			},
+			"response": []
+		},
+		{
+			"name": "All endpoints",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:12345/endpoints",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "12345",
+					"path": [
+						"endpoints"
+					]
+				}
 			},
 			"response": []
 		}
